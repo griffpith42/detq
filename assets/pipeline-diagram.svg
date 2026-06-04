@@ -1,0 +1,89 @@
+<svg viewBox="0 0 860 540" xmlns="http://www.w3.org/2000/svg" font-family="'Courier New', monospace">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1A1A2E"/>
+      <stop offset="100%" style="stop-color:#0F3460"/>
+    </linearGradient>
+    <linearGradient id="stageGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#16213E"/>
+      <stop offset="100%" style="stop-color:#0F3460"/>
+    </linearGradient>
+    <linearGradient id="aiGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#4A0E2E"/>
+      <stop offset="100%" style="stop-color:#7B1A4B"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#E94560"/>
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="860" height="540" fill="url(#bgGrad)" rx="12"/>
+
+  <!-- Title -->
+  <text x="430" y="36" text-anchor="middle" font-size="18" font-weight="bold" fill="#FFFFFF" letter-spacing="3">DetQ — PROCESSING PIPELINE</text>
+  <text x="430" y="54" text-anchor="middle" font-size="11" fill="#E94560" letter-spacing="2">DETERMINISTIC QUERY FRAMEWORK</text>
+  <line x1="80" y1="64" x2="780" y2="64" stroke="#E94560" stroke-width="1" opacity="0.5"/>
+
+  <!-- USER QUERY BOX -->
+  <rect x="310" y="80" width="240" height="44" rx="6" fill="#E94560" filter="url(#glow)"/>
+  <text x="430" y="97" text-anchor="middle" font-size="11" font-weight="bold" fill="#FFFFFF">USER QUERY</text>
+  <text x="430" y="114" text-anchor="middle" font-size="9" fill="#FFD0DA">"Top 10 tightest spread AAA deals in Q3"</text>
+
+  <!-- Arrow 1 -->
+  <line x1="430" y1="124" x2="430" y2="144" stroke="#E94560" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- STAGE 1: Pre-AI -->
+  <rect x="120" y="148" width="620" height="52" rx="6" fill="url(#stageGrad)" stroke="#E94560" stroke-width="1" opacity="0.9"/>
+  <text x="180" y="166" font-size="10" font-weight="bold" fill="#E94560">STAGE 1</text>
+  <text x="180" y="182" font-size="9" fill="#AACCFF">Pre-AI Intent Extraction  —  deterministic, no model</text>
+  <text x="500" y="166" font-size="9" fill="#88AADD">→ ranking intent   → Top N   → market routing</text>
+  <text x="500" y="182" font-size="9" fill="#88AADD">Sort: spread ASC | Top N: 10 | Market: IG</text>
+  <rect x="130" y="153" width="42" height="16" rx="3" fill="#E94560" opacity="0.2"/>
+
+  <!-- Arrow 2 -->
+  <line x1="430" y1="200" x2="430" y2="220" stroke="#E94560" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- STAGE 2: AI Extraction -->
+  <rect x="120" y="224" width="620" height="52" rx="6" fill="url(#aiGrad)" stroke="#C44080" stroke-width="1.5"/>
+  <text x="180" y="242" font-size="10" font-weight="bold" fill="#FF90C0">STAGE 2</text>
+  <text x="180" y="258" font-size="9" fill="#FFAAD0">AI Extraction  (phi-3 / any LLM)  —  structured JSON output only</text>
+  <text x="500" y="242" font-size="9" fill="#FFAAD0">→ field extraction only — never logic</text>
+  <text x="500" y="258" font-size="9" fill="#CC7090">Output: { rating:"AAA", spread_min:null … }</text>
+
+  <!-- Arrow 3 -->
+  <line x1="430" y1="276" x2="430" y2="296" stroke="#E94560" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- STAGE 3: Guard Rules -->
+  <rect x="120" y="300" width="620" height="52" rx="6" fill="url(#stageGrad)" stroke="#E94560" stroke-width="1" opacity="0.9"/>
+  <text x="180" y="318" font-size="10" font-weight="bold" fill="#E94560">STAGE 3</text>
+  <text x="180" y="334" font-size="9" fill="#AACCFF">Guard Rule Enforcement  —  10 deterministic rules, post-AI</text>
+  <text x="500" y="318" font-size="9" fill="#88AADD">→ numeric gate   → entity guard   → stop tokens</text>
+  <text x="500" y="334" font-size="9" fill="#88AADD">→ UOP lock   → demand guard   → sector sanity</text>
+
+  <!-- Arrow 4 -->
+  <line x1="430" y1="352" x2="430" y2="372" stroke="#E94560" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- STAGE 4: SQL -->
+  <rect x="120" y="376" width="620" height="52" rx="6" fill="url(#stageGrad)" stroke="#E94560" stroke-width="1" opacity="0.9"/>
+  <text x="180" y="394" font-size="10" font-weight="bold" fill="#E94560">STAGE 4</text>
+  <text x="180" y="410" font-size="9" fill="#AACCFF">SQL Generation + Database Execution  —  parameterized, read-only</text>
+  <text x="500" y="394" font-size="9" fill="#88AADD">IG/HY: buildSQLQuery() → SQLite/PostgreSQL</text>
+  <text x="500" y="410" font-size="9" fill="#88AADD">ABS: raw SELECT → in-memory JS aggregation</text>
+
+  <!-- Arrow 5 -->
+  <line x1="430" y1="428" x2="430" y2="448" stroke="#E94560" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- STAGE 5: Output -->
+  <rect x="120" y="452" width="620" height="48" rx="6" fill="#E94560" opacity="0.9"/>
+  <text x="430" y="470" text-anchor="middle" font-size="10" font-weight="bold" fill="#FFFFFF">STAGE 5 — Formatted Output</text>
+  <text x="430" y="488" text-anchor="middle" font-size="9" fill="#FFD0DA">Deal grouping  →  Top N enforcement  →  Structured JSON + Table</text>
+
+  <!-- Core promise tag -->
+  <rect x="240" y="512" width="380" height="20" rx="4" fill="none" stroke="#E94560" stroke-width="1" opacity="0.6"/>
+  <text x="430" y="526" text-anchor="middle" font-size="9" fill="#E94560" letter-spacing="1">SAME INPUT → SAME OUTPUT → EVERY TIME</text>
+</svg>
