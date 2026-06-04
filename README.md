@@ -1,6 +1,7 @@
 # DetQ — Deterministic Query Framework for Corporate Bond Analytics
 
 > **Natural language. Zero hallucinations. Analyst-grade output.**
+![DetQ Pipeline](./assets/pipeline-diagram.svg)
 
 DetQ is a white-label, deterministic natural language query system (NLQS) designed for corporate bond analytics teams. It translates plain English questions into structured database queries — returning consistent, reproducible results with no AI inference, no invented assumptions, and no analyst intervention required.
 
